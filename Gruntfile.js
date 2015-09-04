@@ -391,7 +391,11 @@ module.exports = function (grunt) {
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
+        autoWatch: false,
         singleRun: true
+      },
+      unit_auto: {
+        configFile: 'test/karma.conf.js'
       }
     }
   });
@@ -422,7 +426,15 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
+    'karma:unit'
+  ]);
+
+  grunt.registerTask('testWatch', [
+    'clean:server',
+    'concurrent:test',
+    'autoprefixer',
+    'connect:test',
+    'karma:unit_auto'
   ]);
 
   grunt.registerTask('build', [
