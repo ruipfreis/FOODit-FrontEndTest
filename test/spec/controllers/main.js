@@ -47,6 +47,10 @@ describe('Test Modules', function(){
         expect(hasModule('ngTouch')).toBe(true);
       });
 
+      it("should have angular-storage as a dependency", function() {
+        expect(hasModule('angular-storage')).toBe(true);
+      });
+
     });
 
   });
