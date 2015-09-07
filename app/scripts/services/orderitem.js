@@ -31,12 +31,15 @@ angular.module('jstestApp')
 
       setPrice : function(price){
         var pf = parseFloat(price);
+        this._price = 1;
         if(pf && pf > 0)
-          this._price = pf.toFixed(2);
+          this._price = pf;
+        this._price = this._price.toFixed(2);
       },
 
       setQuantity : function(quantity){
         var qi = parseInt(quantity);
+        this._quantity = 1;
         if (qi && qi > 0)
           this._quantity = qi;
       },
@@ -58,6 +61,13 @@ angular.module('jstestApp')
         return this._quantity;
       },
 
+      addQuantityBy : function(addQuantity){
+        var
+          aqi = parseInt(addQuantity),
+          currQty = this.getQuantity();
+        if (aqi && aqi > 0)
+          this.setQuantity(currQty + aqi);
+      },
 
       getTotalPrice : function() {
         return parseFloat(this.getQuantity() * this.getPrice()).toFixed(2);
