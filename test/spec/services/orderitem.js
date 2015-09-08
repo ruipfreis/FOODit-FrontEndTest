@@ -33,7 +33,7 @@ describe('Service: OrderItem', function () {
     };
 
   beforeEach(function(){
-    item = OrderItem.create(itemData.id, 'test', itemData.price, itemData.quantity);
+    item = OrderItem.create(itemData.id, itemData.name, itemData.price, itemData.quantity);
   });
 
   it('should create a new object with type OrderItem', function(){

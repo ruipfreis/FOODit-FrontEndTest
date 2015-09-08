@@ -71,7 +71,7 @@ describe("Test Routes", function() {
     }
   );
 
-  it("should have a working videos_path route", function() {
+  it("should have a working route", function() {
     expect($route.routes['/']).toBeDefined();
     expect($route.routes['/'].templateUrl).toBe('views/main.html');
     expect($route.routes['/'].controller).toBe('MainCtrl');

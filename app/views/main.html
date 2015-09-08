@@ -4,5 +4,12 @@
     <img class="image" ng-src="{{meal.primaryImageUrl}}">
     <p class="description">{{meal.description}}</p>
     <p class="price">{{meal.price}}</p>
+    <div>
+      <ul>
+        <li ng-repeat="tag in meal.tags">
+          <p>{{tag}}</p>
+        </li>
+      </ul>
+    </div>
   </li>
 </ul>
