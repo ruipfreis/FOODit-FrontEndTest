@@ -65,7 +65,7 @@ angular.module('jstestApp')
         var
           aqi = parseInt(addQuantity),
           currQty = this.getQuantity();
-        if (aqi && aqi > 0)
+        if (aqi)
           this.setQuantity(currQty + aqi);
       },
 

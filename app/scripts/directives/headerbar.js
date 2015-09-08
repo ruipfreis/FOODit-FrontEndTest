@@ -12,7 +12,7 @@ angular.module('jstestApp')
       templateUrl: 'views/header-bar.html',
       restrict: 'AE',
       controller: 'MainCtrl',
-      link: function postLink(scope, element, attrs) {
+      link: function (scope, element, attrs) {
         element.bind('click', function(){
 
         });

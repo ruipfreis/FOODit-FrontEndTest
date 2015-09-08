@@ -105,4 +105,24 @@ describe('Service: OrderService', function () {
 
   });
 
+  it('should calculate the total items of the order' , function(){
+
+    OrderService.addOrderItem({
+      id : '12345',
+      name : 'item 2',
+      price : '19.99',
+      quantity : '2'
+    });
+
+    OrderService.addOrderItem({
+      id : '1234',
+      name : 'item 2',
+      price : '9.99',
+      quantity : '1'
+    });
+
+    expect(OrderService.getTotalItemCount()).toBe(3);
+
+  });
+
 });

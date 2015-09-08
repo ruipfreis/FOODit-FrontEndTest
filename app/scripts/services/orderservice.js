@@ -71,6 +71,16 @@ angular.module('jstestApp')
         return totalPrice.toFixed(2);
       },
 
+      getTotalItemCount : function(){
+        var totalCount = 0;
+
+        for (var index = 0; index < this._orderItems.length; index++ ) {
+          totalCount += parseInt(this._orderItems[index].getQuantity());
+        }
+
+        return totalCount;
+      },
+
       clearOrder : function(){
         this._orderItems = [];
       }

@@ -1,1 +1,35 @@
-<div class="header">Menu</div>
+<div class="header">
+  <div ng-show="order.getTotalItemCount()==0">
+    <div class="order-total">
+      It's time to order some delicious food
+    </div>
+  </div>
+
+  <div ng-hide="order.getTotalItemCount()==0">
+
+    <div class="order-header">
+      <p>Your Order</p>
+      <p>A Delicious Restaurant</p>
+    </div>
+
+    <div class="order-list">
+      <div class="order-item" ng-repeat="item in order.getOrderItems()">
+        <div class="item-quantity">
+          <span class="order-item-inc" ng-click="item.addQuantityBy(1)">+</span>
+          {{item.getQuantity()}}
+          <span class="order-item-dec" ng-click="item.addQuantityBy(-1)">-</span>
+        </div>
+        <div class="item-info">
+          <div class="item-name">{{item.getName()}}</div>
+          <div class="item-special">+extra chili</div>
+          <div class="item-total">{{item.getTotalPrice()}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-total">
+      {{order.getTotalOrderPrice()}}
+    </div>
+
+  </div>
+</div>
