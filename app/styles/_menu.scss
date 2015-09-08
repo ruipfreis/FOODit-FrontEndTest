@@ -1,3 +1,76 @@
+.delicious-restaurant {
+  font-weight: bold;
+  font-size: scaled-value($text_size--base, 20, 1px);
+  line-height: scaled-value($text_size--base, 20, 1px);
+}
+
 .content {
   margin-top: $header-height;
+  padding: $main-content-padding;
+
+
+  .meals {
+    margin-top: $main-content-padding;
+    max-width: 100%;
+
+    li.meal {
+      background: $white;
+      margin-bottom: 20px;
+
+      .meal-top {
+        position: relative;
+        text-align: center;
+
+        .meal-price {
+          width: 30px;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          margin-left: -25px;
+        }
+
+
+        .meal-name-tag {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+
+          img.card-curve {
+            &.transparent {
+              opacity: 0.9;
+            }
+          }
+
+          .meal-name {
+            line-height: 30px;
+          }
+
+          .meal-name-wrapper {
+            background: rgb(255, 255, 255); /* fallback */
+            background: rgba(255, 255, 255, 0.9);
+          }
+
+        }
+
+      }
+
+      .meal-description {
+        background: $white;
+        padding: 10px 20px;
+      }
+
+      .meal-add-to-order{
+        background: $white;
+        text-align: center;
+
+        padding: 10px 20px;
+
+        .blue-btn {
+          cursor: pointer;
+          width: 100%;
+        }
+      }
+
+    }
+  }
 }

@@ -1,3 +1,5 @@
+$header-element-height: 30px;
+
 .header {
   background: $header-bg-color;
   position: fixed;
@@ -5,7 +7,22 @@
   left: 0;
   width: 100%;
   height: $header-height;
+  z-index: 9999;
 
+  .header-content {
+    height: $header-element-height;
+    margin: ($header-height - $header-element-height)/2 $main-content-padding;
+  }
 
+  .header-element {
+    height: $header-element-height;
+    line-height: $header-element-height;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .header-element.red{
+    background: $light-red;
+    border: 1px $dark-red solid;
+  }
 
 }

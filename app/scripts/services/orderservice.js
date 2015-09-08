@@ -27,7 +27,7 @@ angular.module('jstestApp')
         if (typeof item !== 'object')
           return false;
         if (typeof item !== 'OrderItem')
-          item = OrderItem.create(item.id, item.name, item.price, item.quantity);
+          item = OrderItem.create(item.id, item.name, item.price, item.quantity, item.tags);
 
         var existingItem = this.getOrderItemById(item.getId());
 

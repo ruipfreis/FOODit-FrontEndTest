@@ -22,22 +22,28 @@ describe('Service: OrderItem', function () {
       name : 'test',
       price : '10.00',
       quantity : 5,
-      total : '50.00'
+      total : '50.00',
+      tags: ["#course:main_courses", "beef"]
     },
     itemData2 = {
       id : '123abc',
       name : 'test2',
       price : '10.55',
       quantity : 2,
-      total : '21.10'
+      total : '21.10',
+      tags: ["beef"]
     };
 
   beforeEach(function(){
-    item = OrderItem.create(itemData.id, itemData.name, itemData.price, itemData.quantity);
+    item = OrderItem.create(itemData.id, itemData.name, itemData.price, itemData.quantity, itemData.tags);
   });
 
   it('should create a new object with type OrderItem', function(){
     expect(item).toEqual(jasmine.any(OrderItem));
+  });
+
+  it('should expect a main course', function(){
+    expect(item.hasTag('main_courses')).toEqual(true);
   });
 
   it('should get an item with ID ' + itemData.id + ' and get a total price of ' + itemData.total, function(){

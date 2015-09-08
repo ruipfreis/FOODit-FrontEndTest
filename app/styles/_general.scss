@@ -1,3 +1,18 @@
+body {
+  background: $light-gray;
+}
+
 img {
-  max-width: 100%;
+  width: 100%;
+}
+
+.blue-btn {
+  background: $blue;
+  padding: 5px 10px;
+  color: $white;
+  text-align: center;
+
+  border: 0;
+  outline: 0;
+  border-radius: 0;
 }

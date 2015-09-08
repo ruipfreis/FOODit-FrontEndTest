@@ -10,11 +10,12 @@
 angular.module('jstestApp')
   .factory('OrderItem', function () {
 
-    function OrderItem(id, name, price, quantity) {
+    function OrderItem(id, name, price, quantity, tags) {
       this.setId(id);
       this.setName(name);
       this.setPrice(price);
       this.setQuantity(quantity);
+      this.setTags(tags);
     }
 
     OrderItem.prototype = {
@@ -44,6 +45,12 @@ angular.module('jstestApp')
           this._quantity = qi;
       },
 
+      setTags : function(tags){
+        this._tags = [];
+        if(Array.isArray(tags))
+          this._tags = tags;
+      },
+
       //getters
       getId : function(){
         return this._id;
@@ -61,6 +68,16 @@ angular.module('jstestApp')
         return this._quantity;
       },
 
+      getTags : function(){
+        return this._tags;
+      },
+
+      hasTag : function(searchTag){
+        return this.getTags().some(function(tag){
+          return (tag.indexOf(searchTag) > -1);
+        });
+      },
+
       addQuantityBy : function(addQuantity){
         var
           aqi = parseInt(addQuantity),
@@ -74,9 +91,33 @@ angular.module('jstestApp')
       }
     };
 
-    OrderItem.create = function(id, name, price, quantity){
-      return new OrderItem(id, name, price, quantity);
+    OrderItem.create = function(id, name, price, quantity, tags){
+      return new OrderItem(id, name, price, quantity, tags);
     };
 
     return OrderItem;
+  })
+  .filter('hasTag', function() {
+    return function(items, tag) {
+      var
+        filteredItems = [];
+
+      items.forEach(function(item){
+        if(item.hasTag(tag))
+          filteredItems.push(item);
+      });
+      return filteredItems;
+    }
+  })
+  .filter('notHasTag', function() {
+    return function(items, tag) {
+      var
+        filteredItems = [];
+
+      items.forEach(function(item){
+        if(!item.hasTag(tag))
+          filteredItems.push(item);
+      });
+      return filteredItems;
+    }
   });
