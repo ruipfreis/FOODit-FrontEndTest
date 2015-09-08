@@ -31,4 +31,13 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .run(['$rootScope', 'OrderItem','OrderService', 'store', function ($rootScope, OrderItem, OrderService, store) {
+
+    $rootScope.$on('order:change', function(){
+      OrderService.save();
+    });
+
+    OrderService.restore();
+
+  }]);

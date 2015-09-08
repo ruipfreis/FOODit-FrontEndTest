@@ -8,7 +8,7 @@
  * Factory in the jstestApp.
  */
 angular.module('jstestApp')
-  .factory('OrderItem', function () {
+  .factory('OrderItem', function ($rootScope) {
 
     function OrderItem(id, name, price, quantity, tags) {
       this.setId(id);
@@ -84,6 +84,8 @@ angular.module('jstestApp')
           currQty = this.getQuantity();
         if (aqi)
           this.setQuantity(currQty + aqi);
+
+        $rootScope.$broadcast('order:change', {});
       },
 
       getTotalPrice : function() {

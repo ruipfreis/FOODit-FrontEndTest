@@ -13,7 +13,7 @@
     margin-top: $main-content-padding;
     max-width: 100%;
 
-    li.meal {
+    .meal {
       background: $white;
       margin-bottom: 20px;
 
@@ -21,23 +21,30 @@
         position: relative;
         text-align: center;
 
-        .meal-price {
-          width: 30px;
-          position: absolute;
-          top: 0;
-          left: 50%;
-          margin-left: -25px;
-        }
+        .meal-image {}
 
+        .meal-price-wrapper {
+          position: absolute;
+          width: 100%;
+          top: 0;
+          .meal-price {
+            &.pound:before {
+              content:$pound;
+            }
+            min-width: 30px;
+            display: inline-block;
+          }
+        }
 
         .meal-name-tag {
           position: absolute;
           bottom: 0;
           width: 100%;
+          font-size: 0;
 
-          img.card-curve {
+          .card-curve {
             &.transparent {
-              opacity: 0.9;
+              opacity: 0.8;
             }
           }
 
@@ -47,11 +54,34 @@
 
           .meal-name-wrapper {
             background: rgb(255, 255, 255); /* fallback */
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.8);
+
+            .meal-name-content {
+              position: relative;
+
+              .meal-tags-wrapper {
+                float: right;
+                position: relative;
+                left: -50%;
+                text-align: left;
+                bottom: 0;
+                height: 10px;
+                .meal-tags {
+                  position: relative;
+                  left: 50%;
+                  width: 100%;
+                  li {
+                    float: left;
+                    position: relative;
+                    img {
+                      width: 25px;
+                    }
+                  }
+                }
+              }
+            }
           }
-
         }
-
       }
 
       .meal-description {

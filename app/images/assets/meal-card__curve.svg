@@ -1,15 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="284px" height="17px" viewBox="0 0 284 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch Beta 3.1 (8657) - http://www.bohemiancoding.com/sketch -->
-    <title>meal-card__curve</title>
-    <desc>Created with Sketch Beta.</desc>
-    <defs>
-        <path id="path-1" d="M-0.0305467417,6.52396878 C39.6806251,2.4029863 92.4225895,0 143.78125,0 C195.13991,0 242.881875,2.4029863 282.593046,6.52396866 L284,6.52396878 L284,16.9498328 L4,16.9498328 L4,6.57452496 L-0.0305467417,6.52396878 Z"></path>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="meal-card__curve">
-            <use fill="#FFFFFF" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
-            <use fill="none" xlink:href="#path-1"></use>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="284px" height="17px"
+	 viewBox="0 0 284 17" enable-background="new 0 0 284 17" xml:space="preserve">
+<title>meal-card__curve</title>
+<desc>Created with Sketch Beta.</desc>
+<g id="Page-1" sketch:type="MSPage">
+	<g id="meal-card__curve">
+		<g sketch:type="MSShapeGroup">
+			<path id="path-1" fill="#FFFFFF" d="M-0.016,6.574C39.695,2.453,92.437,0.05,143.796,0.05s99.101,2.403,138.812,6.524h1.407V17
+				h-280V6.625L-0.016,6.574z"/>
+		</g>
+		<g>
+			<path id="path-1_1_" fill="none" d="M-0.016,6.574C39.695,2.453,92.437,0.05,143.796,0.05s99.101,2.403,138.812,6.524h1.407V17
+				h-280V6.625L-0.016,6.574z"/>
+		</g>
+	</g>
+</g>
+<rect x="-0.016" y="6.574" fill="#FFFFFF" width="4.031" height="10.426"/>
 </svg>

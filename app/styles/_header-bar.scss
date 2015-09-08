@@ -12,17 +12,62 @@ $header-element-height: 30px;
   .header-content {
     height: $header-element-height;
     margin: ($header-height - $header-element-height)/2 $main-content-padding;
+
+
+    .order-item {
+      .item-total {
+        &.pound:before {
+          content:$pound;
+        }
+      }
+    }
+
+    .order-total {
+      @extend .header-element;
+      float: right;
+
+      &.pound:before {
+        content:$pound;
+      }
+    }
+
+    .order-tag-type-count {
+      @extend .header-element;
+      float: left;
+      margin-right: 10px;
+      color: $dark-red !important;
+    }
+
+    &.closed {
+      .order-header {
+        display: none;
+      }
+
+      .order-item {
+        display: none;
+      }
+    }
+
+    &.opened {
+      .order-header {
+        display: block;
+      }
+
+      .order-item {
+        display: block;
+      }
+    }
+
   }
 
   .header-element {
+    @extend .element-red;
     height: $header-element-height;
     line-height: $header-element-height;
+    padding: 0 10px;
     vertical-align: middle;
     text-align: center;
-  }
-  .header-element.red{
-    background: $light-red;
-    border: 1px $dark-red solid;
+    color: $white;
   }
 
 }

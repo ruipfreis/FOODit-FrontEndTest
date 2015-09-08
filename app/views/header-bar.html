@@ -1,7 +1,7 @@
 <div class="header">
-  <div class="header-content">
+  <div class="header-content closed">
     <div ng-show="order.getTotalItemCount()==0">
-      <div class="order-total header-element red">
+      <div class="header-element">
         It's time to order some delicious food
       </div>
     </div>
@@ -15,7 +15,13 @@
 
       <div class="order-list">
 
-        <div class="order-tag-type-count">
+        <!--
+        TODO:
+        Create Directive to handle different courses Types,
+        instead of cycling through the order items multiple times filtering the data
+        -->
+
+        <div ng-hide="filteredResults.length == 0" class="order-tag-type-count">
           {{filteredResults.length}} main
         </div>
 
@@ -28,12 +34,12 @@
           <div class="item-info">
             <div class="item-name">{{item.getName()}}</div>
             <div class="item-special">+extra chili</div>
-            <div class="item-total">{{item.getTotalPrice()}}</div>
+            <div class="item-total pound">{{item.getTotalPrice()}}</div>
           </div>
         </div>
 
 
-        <div class="order-tag-type-count">
+        <div ng-hide="filteredOutResults.length == 0" class="order-tag-type-count">
           {{filteredOutResults.length}} other
         </div>
 
@@ -46,13 +52,13 @@
           <div class="item-info">
             <div class="item-name">{{item.getName()}}</div>
             <div class="item-special">+extra chili</div>
-            <div class="item-total">{{item.getTotalPrice()}}</div>
+            <div class="item-total pound">{{item.getTotalPrice()}}</div>
           </div>
         </div>
 
       </div>
 
-      <div class="order-total">
+      <div class="order-total pound">
         {{order.getTotalOrderPrice()}}
       </div>
 

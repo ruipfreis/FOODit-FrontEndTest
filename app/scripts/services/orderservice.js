@@ -8,7 +8,7 @@
  * Service in the jstestApp.
  */
 angular.module('jstestApp')
-  .service('OrderService', function (OrderItem) {
+  .service('OrderService', function (OrderItem, store, $rootScope) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     return {
@@ -20,6 +20,7 @@ angular.module('jstestApp')
 
       setOrderItems : function(orderItems){
         this._orderItems = orderItems;
+        this.save();
       },
 
       addOrderItem : function(item){
@@ -35,6 +36,8 @@ angular.module('jstestApp')
           existingItem.addQuantityBy(item.getQuantity());
         else
           this._orderItems.push(item);
+
+        $rootScope.$broadcast('order:change', {});
 
         return item;
       },
@@ -56,6 +59,9 @@ angular.module('jstestApp')
         for(var index = 0; index < this._orderItems.length; index++) {
           if (this._orderItems[index].getId() === itemId) {
             this._orderItems.splice(index, 1);
+
+            $rootScope.$broadcast('order:change', {});
+
             break;
           }
         }
@@ -83,6 +89,21 @@ angular.module('jstestApp')
 
       clearOrder : function(){
         this._orderItems = [];
+        $rootScope.$broadcast('order:change', {});
+      },
+
+      save: function(){
+        store.set('orderItems', this.getOrderItems());
+      },
+
+      restore: function(){
+        var
+          restoredOrder = store.get('orderItems'),
+          self = this;
+
+        angular.forEach(restoredOrder, function (item) {
+          self._orderItems.push(OrderItem.create(item._id, item._name, item._price, item._quantity, item._tags));
+        });
       }
     };
 

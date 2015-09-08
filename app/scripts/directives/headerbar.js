@@ -13,9 +13,15 @@ angular.module('jstestApp')
       restrict: 'AE',
       controller: 'MainCtrl',
       link: function (scope, element, attrs) {
-        element.bind('click', function(){
 
+        element.bind('mousemove', function(event){
+          console.log(event);
+          event.preventDefault();
         });
+
+/*        element.bind('mouseup', function(){
+          console.log('teste 3');
+        });*/
       }
     };
   });

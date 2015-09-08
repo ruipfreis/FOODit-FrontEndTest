@@ -3,23 +3,33 @@
   <li class="meal" ng-repeat="meal in menu.meals">
     <div class="meal-top">
       <img class="meal-image" ng-src="{{meal.primaryImageUrl}}">
-      <span class="meal-price blue-btn sub">{{meal.price}}</span>
 
+      <div class="meal-price-wrapper">
+          <div class="meal-price blue-btn sub pound">{{meal.price}}</div>
+      </div>
 
       <div class="meal-name-tag">
         <img class="card-curve transparent" src="/images/assets/meal-card__curve.svg">
         <div class="meal-name-wrapper">
-          <h4 class="meal-name">{{meal.name}}</h4>
+
+          <div class="meal-name-content">
+
+            <h4 class="meal-name">{{meal.name}}</h4>
+
+            <div class="meal-tags-wrapper">
+              <ul class="meal-tags">
+                <li ng-repeat="tag in meal.tags">
+                  <div tag-image data-tag="{{tag}}"></div>
+                </li>
+              </ul>
+            </div>
+
+
+          </div>
+
           <img class="card-curve" src="/images/assets/meal-card__curve.svg">
         </div>
 
-
-
-<!--        <ul class="meal-tags">
-          <li ng-repeat="tag in meal.tags">
-            <p>{{tag}}</p>
-          </li>
-        </ul>-->
       </div>
 
 
