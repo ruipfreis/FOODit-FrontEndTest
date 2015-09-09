@@ -6,12 +6,11 @@ $header-element-height: 30px;
   top: 0;
   left: 0;
   width: 100%;
-  height: $header-height;
   z-index: 9999;
 
   .header-content {
-    height: $header-element-height;
-    margin: ($header-height - $header-element-height)/2 $main-content-padding;
+    min-height: $header-element-height;
+    background: $header-bg-color;
 
 
     .order-item {
@@ -25,6 +24,7 @@ $header-element-height: 30px;
     .order-total {
       @extend .header-element;
       float: right;
+      margin: 0 !important;
 
       &.pound:before {
         content:$pound;
@@ -34,28 +34,8 @@ $header-element-height: 30px;
     .order-tag-type-count {
       @extend .header-element;
       float: left;
-      margin-right: 10px;
+      margin: 0 10px 0 0 !important;
       color: $dark-red !important;
-    }
-
-    &.closed {
-      .order-header {
-        display: none;
-      }
-
-      .order-item {
-        display: none;
-      }
-    }
-
-    &.opened {
-      .order-header {
-        display: block;
-      }
-
-      .order-item {
-        display: block;
-      }
     }
 
   }
@@ -64,10 +44,121 @@ $header-element-height: 30px;
     @extend .element-red;
     height: $header-element-height;
     line-height: $header-element-height;
+    margin: ($header-height - $header-element-height)/2 $main-content-padding;
     padding: 0 10px;
     vertical-align: middle;
     text-align: center;
     color: $white;
   }
 
+  .order-detail {
+    margin: ($header-height - $header-element-height)/2 $main-content-padding;
+    background: $header-bg-color;
+  }
+
+  .order-summary {
+    border-top: 1px solid $light-red;
+    height: $header-element-height;
+    padding: ($header-height - $header-element-height)/2 $main-content-padding;
+    background: $header-bg-color;
+  }
+
+  .order-header {
+    h2, p {
+      color: $white;
+    }
+  }
+
+  .order-list {
+    margin-top: 20px;
+  }
+
+  .order-type-count {
+    color: $darker-red !important;
+  }
+
+  .order-items-wrapper {
+    @include border-radius(10px, 10px);
+    border: 1px $dark-red solid;
+    overflow: hidden;
+    margin-top: 5px;
+    margin-bottom: 15px;
+
+    .order-item {
+      background: $light-red;
+      overflow: hidden;
+
+      .item-quantity{
+        position: relative;
+        background: $red;
+        float: left;
+        padding: 5px;
+        width: 15px;
+        text-align: center;
+
+        .order-item-inc, .order-item-dec {
+          color: $darker-red;
+        }
+
+        .order-item-cur {
+          color: $white;
+        }
+
+      }
+
+      .item-info{
+        padding: 8px;
+        color: $white;
+        overflow: hidden;
+        height: 42px;
+
+        .left {
+          float: left;
+          max-width: 75%;
+        }
+
+        .item-total {
+          float: right;
+        }
+      }
+
+      &+.order-item {
+        border-top: 1px $dark-red solid;
+      }
+    }
+
+  }
+
+  .confirm-order {
+    float: left;
+    width: 60%;
+    .white-btn {
+      height: $header-element-height;
+      line-height: $header-element-height;
+      padding: 0 10px;
+      vertical-align: middle;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+.header {
+  &.closed {
+    .order-detail, .confirm-order {
+      display: none;
+    }
+    .order-tag-type-count {
+      display: block;
+    }
+  }
+
+  &.opened {
+    .order-detail, .confirm-order {
+      display: block;
+    }
+    .order-tag-type-count {
+      display: none;
+    }
+  }
 }

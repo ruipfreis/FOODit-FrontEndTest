@@ -6,15 +6,25 @@ img {
   width: 100%;
 }
 
-.blue-btn {
-  background: $blue;
+.button {
   padding: 5px 10px;
-  color: $white;
   text-align: center;
 
   border: 0;
   outline: 0;
   border-radius: 0;
+}
+
+.blue-btn {
+  @extend .button;
+  background: $blue;
+  color: $white;
+}
+
+.white-btn {
+  @extend .button;
+  background: $white;
+  color: $darker-red;
 }
 
 .element-red{

@@ -1,68 +1,91 @@
-<div class="header">
-  <div class="header-content closed">
-    <div ng-show="order.getTotalItemCount()==0">
-      <div class="header-element">
-        It's time to order some delicious food
-      </div>
+<div class="header-content">
+  <div ng-show="order.getTotalItemCount()==0">
+    <div class="header-element">
+      It's time to order some delicious food
+    </div>
+  </div>
+
+  <div class="order-detail" ng-hide="order.getTotalItemCount()==0">
+
+    <div class="order-header">
+      <h2>Your Order</h2>
+      <p class="sub">A Delicious Restaurant</p>
     </div>
 
-    <div ng-hide="order.getTotalItemCount()==0">
+    <div class="order-list">
 
-      <div class="order-header">
-        <p>Your Order</p>
-        <p>A Delicious Restaurant</p>
+      <!--
+      TODO:
+      Create Directive to handle different courses Types,
+      instead of cycling through the order items multiple times filtering the data
+      -->
+
+      <div ng-hide="filteredResults.length==0" class="order-type-count sub">
+        {{filteredResults.length}} main
       </div>
 
-      <div class="order-list">
-
-        <!--
-        TODO:
-        Create Directive to handle different courses Types,
-        instead of cycling through the order items multiple times filtering the data
-        -->
-
-        <div ng-hide="filteredResults.length == 0" class="order-tag-type-count">
-          {{filteredResults.length}} main
-        </div>
-
-        <div class="order-item" ng-repeat="item in order.getOrderItems() | hasTag:'main_courses' as filteredResults">
+      <ul class="order-items-wrapper">
+        <li class="order-item" ng-repeat="item in order.getOrderItems() | hasTag:'main_courses' as filteredResults">
           <div class="item-quantity">
-            <span class="order-item-inc" ng-click="item.addQuantityBy(1)">+</span>
-            {{item.getQuantity()}}
-            <span class="order-item-dec" ng-click="item.addQuantityBy(-1)">-</span>
+            <div class="order-item-inc" ng-click="item.addQuantityBy(1)">+</div>
+            <div class="order-item-cur">{{item.getQuantity()}}</div>
+            <div class="order-item-dec" ng-click="item.addQuantityBy(-1)">-</div>
           </div>
           <div class="item-info">
-            <div class="item-name">{{item.getName()}}</div>
-            <div class="item-special">+extra chili</div>
+            <div class="left">
+              <div class="item-name">{{item.getName()}}</div>
+              <div class="item-special">+extra chili</div>
+            </div>
             <div class="item-total pound">{{item.getTotalPrice()}}</div>
           </div>
-        </div>
+        </li>
+      </ul>
 
 
-        <div ng-hide="filteredOutResults.length == 0" class="order-tag-type-count">
-          {{filteredOutResults.length}} other
-        </div>
 
-        <div class="order-item" ng-repeat="item in order.getOrderItems() | notHasTag:'main_courses' as filteredOutResults">
+      <div ng-hide="filteredOutResults.length==0" class="order-type-count sub">
+        {{filteredOutResults.length}} other
+      </div>
+
+      <ul class="order-items-wrapper">
+        <li class="order-item" ng-repeat="item in order.getOrderItems() | notHasTag:'main_courses' as filteredOutResults">
           <div class="item-quantity">
-            <span class="order-item-inc" ng-click="item.addQuantityBy(1)">+</span>
-            {{item.getQuantity()}}
-            <span class="order-item-dec" ng-click="item.addQuantityBy(-1)">-</span>
+            <div class="order-item-inc" ng-click="item.addQuantityBy(1)">+</div>
+            <div class="order-item-cur">{{item.getQuantity()}}</div>
+            <div class="order-item-dec" ng-click="item.addQuantityBy(-1)">-</div>
           </div>
           <div class="item-info">
-            <div class="item-name">{{item.getName()}}</div>
-            <div class="item-special">+extra chili</div>
+            <div class="left">
+              <div class="item-name">{{item.getName()}}</div>
+              <div class="item-special">+extra chili</div>
+            </div>
             <div class="item-total pound">{{item.getTotalPrice()}}</div>
           </div>
-        </div>
-
-      </div>
-
-      <div class="order-total pound">
-        {{order.getTotalOrderPrice()}}
-      </div>
+        </li>
+      </ul>
 
     </div>
 
   </div>
+
+  <div class="order-summary" ng-hide="order.getTotalItemCount()==0">
+
+    <div ng-hide="filteredResults.length==0" class="order-tag-type-count">
+      {{filteredResults.length}} main
+    </div>
+
+    <div ng-hide="filteredOutResults.length==0" class="order-tag-type-count">
+      {{filteredOutResults.length}} other
+    </div>
+
+    <div class="confirm-order">
+      <button class="white-btn" ng-click="order.clearOrder()">Confirm Your Order</button>
+    </div>
+
+    <div class="order-total pound">
+      {{order.getTotalOrderPrice()}}
+    </div>
+
+  </div>
+
 </div>

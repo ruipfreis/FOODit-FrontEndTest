@@ -90,6 +90,7 @@ angular.module('jstestApp')
       clearOrder : function(){
         this._orderItems = [];
         $rootScope.$broadcast('order:change', {});
+        console.log('treste')
       },
 
       save: function(){
