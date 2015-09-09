@@ -54,6 +54,7 @@ $header-element-height: 30px;
   .order-detail {
     margin: ($header-height - $header-element-height)/2 $main-content-padding;
     background: $header-bg-color;
+    overflow: hidden;
   }
 
   .order-summary {
@@ -139,26 +140,6 @@ $header-element-height: 30px;
       vertical-align: middle;
       text-align: center;
       width: 100%;
-    }
-  }
-}
-
-.header {
-  &.closed {
-    .order-detail, .confirm-order {
-      display: none;
-    }
-    .order-tag-type-count {
-      display: block;
-    }
-  }
-
-  &.opened {
-    .order-detail, .confirm-order {
-      display: block;
-    }
-    .order-tag-type-count {
-      display: none;
     }
   }
 }

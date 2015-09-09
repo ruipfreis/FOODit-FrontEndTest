@@ -1,18 +1,18 @@
 <div class="header-content">
-  <div ng-show="order.getTotalItemCount()==0">
+  <div class="fade" ng-show="order.getTotalItemCount()==0">
     <div class="header-element">
       It's time to order some delicious food
     </div>
   </div>
 
-  <div class="order-detail" ng-hide="order.getTotalItemCount()==0">
+  <div class="order-detail scroll" ng-show="open && order.getTotalItemCount()>0">
 
-    <div class="order-header">
+    <div class="order-header slide" ng-show="open">
       <h2>Your Order</h2>
       <p class="sub">A Delicious Restaurant</p>
     </div>
 
-    <div class="order-list">
+    <div class="order-list fade" ng-show="open">
 
       <!--
       TODO:
@@ -24,7 +24,7 @@
         {{filteredResults.length}} main
       </div>
 
-      <ul class="order-items-wrapper">
+      <ul ng-hide="filteredResults.length==0" class="order-items-wrapper">
         <li class="order-item" ng-repeat="item in order.getOrderItems() | hasTag:'main_courses' as filteredResults">
           <div class="item-quantity">
             <div class="order-item-inc" ng-click="item.addQuantityBy(1)">+</div>
@@ -47,7 +47,7 @@
         {{filteredOutResults.length}} other
       </div>
 
-      <ul class="order-items-wrapper">
+      <ul ng-hide="filteredOutResults.length==0" class="order-items-wrapper">
         <li class="order-item" ng-repeat="item in order.getOrderItems() | notHasTag:'main_courses' as filteredOutResults">
           <div class="item-quantity">
             <div class="order-item-inc" ng-click="item.addQuantityBy(1)">+</div>
@@ -68,17 +68,17 @@
 
   </div>
 
-  <div class="order-summary" ng-hide="order.getTotalItemCount()==0">
+  <div class="order-summary fade" ng-hide="order.getTotalItemCount()==0" ng-click="open = !open" ng-class="{active:open}">
 
-    <div ng-hide="filteredResults.length==0" class="order-tag-type-count">
+    <div ng-hide="open || filteredResults.length==0" class="order-tag-type-count">
       {{filteredResults.length}} main
     </div>
 
-    <div ng-hide="filteredOutResults.length==0" class="order-tag-type-count">
+    <div ng-hide="open || filteredOutResults.length==0" class="order-tag-type-count">
       {{filteredOutResults.length}} other
     </div>
 
-    <div class="confirm-order">
+    <div class="confirm-order" ng-show="open">
       <button class="white-btn" ng-click="order.clearOrder()">Confirm Your Order</button>
     </div>
 

@@ -9,7 +9,6 @@ img {
 .button {
   padding: 5px 10px;
   text-align: center;
-
   border: 0;
   outline: 0;
   border-radius: 0;
@@ -30,4 +29,32 @@ img {
 .element-red{
   background: $light-red;
   border: 1px $dark-red solid;
+}
+
+.slide, .fade, .scroll{
+  transition: all linear 0.5s;
+}
+
+.fade, .fade.ng-show{
+  @include opacity(1);
+}
+
+.fade.ng-hide {
+  @include opacity(0);
+}
+
+.slide, .slide.ng-show {
+  @include translateX(0);
+}
+
+.slide.ng-hide {
+  @include translateX(-100%);
+}
+
+.scroll, .scroll.ng-show {
+  @include translateY(0);
+}
+
+.scroll.ng-hide {
+  @include translateY(-100%);
 }
